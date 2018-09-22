@@ -4,18 +4,22 @@ function solveRect(l,b)
 {
     console.log("Solving for rect with l = " + l + " and b = " + b);
 
-    if (l <= 0 || b <= 0)
-    {
-        console.log("Rectangle dimensions should be greater than zero");
-    }
-    else
-    {
-        console.log("Rectangle area is: " + rect.area(l,b));
-        console.log("Rectangle perimeter is: " + rect.perimeter(l,b));
-    }
+    rect(l,b,(error, rectangle) => {
+        if (error) {
+            console.log("Error: ", error.message);
+        }
+        else {
+            console.log("Rectangle l:" + l + " and b: " + b + " has an area of " + rectangle.area());
+            console.log("The perimeter is " + rectangle.perimeter());
+            console.log("");
+        }
+    });
+
+    console.log("This statement is after the call to rect()...")
+    console.log("");
 }
 
 solveRect(2,4);
 solveRect(3,5);
 solveRect(0,5);
-solveRect(-1,-4);
+solveRect(-3,5);
